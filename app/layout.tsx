@@ -48,7 +48,7 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <AuthProvider>{children}</AuthProvider>
         {gaId && <GoogleAnalytics gaId={gaId} />}

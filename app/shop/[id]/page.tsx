@@ -57,12 +57,24 @@ export default function ShopDetailPage() {
         setLoading(true);
         setError(null);
 
-        // Fetch shop details
-        const { data: shopData, error: shopError } = await supabase
+        // Fetch shop details by slug first, fallback to id for backward compatibility
+        let { data: shopData, error: shopError } = await supabase
           .from('listings')
           .select('*')
-          .eq('id', shopId)
+          .eq('slug', shopId)
           .single();
+
+        // If not found by slug, try by ID (backward compatibility)
+        if (shopError || !shopData) {
+          const { data: shopDataById, error: shopErrorById } = await supabase
+            .from('listings')
+            .select('*')
+            .eq('id', shopId)
+            .single();
+
+          shopData = shopDataById;
+          shopError = shopErrorById;
+        }
 
         if (shopError) throw shopError;
         if (!shopData) throw new Error('Shop not found');
@@ -164,7 +176,7 @@ export default function ShopDetailPage() {
                       </span>
                     )}
                     <ShareButtons
-                      url={typeof window !== 'undefined' ? window.location.href : `https://tireshoppro.ca/shop/${shop.id}`}
+                      url={typeof window !== 'undefined' ? window.location.href : `https://tireshoppro.ca/shop/${shop.slug || shop.id}`}
                       title={`${shop.name} - Tire Shop`}
                       description={`Check out ${shop.name} in ${shop.city}, ${shop.state}. ${shop.description || 'Find tire services, contact information, and hours of operation.'}`}
                     />
@@ -337,12 +349,12 @@ export default function ShopDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Reviews List */}
             <div>
-              <ReviewsList shopId={shopId} />
+              <ReviewsList shopId={shop.id} />
             </div>
 
             {/* Review Form */}
             <div>
-              <ReviewForm shopId={shopId} shopName={shop.name} />
+              <ReviewForm shopId={shop.id} shopName={shop.name} />
             </div>
           </div>
         </div>

@@ -6,14 +6,14 @@ import { TireShop } from '@/types';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
 
-  // Fetch all shops to get unique provinces and cities
+  // Fetch all shops to get unique provinces, cities, and shop URLs
   const { data: shops } = await supabase
     .from('listings')
-    .select('state, city')
+    .select('id, slug, state, city, updated_at')
     .not('state', 'is', null)
     .not('city', 'is', null);
 
-  const typedShops = (shops || []) as Pick<TireShop, 'state' | 'city'>[];
+  const typedShops = (shops || []) as Pick<TireShop, 'id' | 'slug' | 'state' | 'city'>[];
 
   if (typedShops.length === 0) {
     return [
@@ -70,5 +70,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [homeUrl, ...provinceUrls, ...cityUrls];
+  // Individual shop pages
+  const shopUrls = typedShops
+    .filter(shop => shop.slug) // Only include shops with slugs
+    .map(shop => ({
+      url: `${baseUrl}/shop/${shop.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }));
+
+  return [homeUrl, ...provinceUrls, ...cityUrls, ...shopUrls];
 }

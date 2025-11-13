@@ -23,7 +23,7 @@ function getTodayHours(shop: TireShop): string | null {
 function ShopCard({ shop }: ShopCardProps) {
   const todayHours = getTodayHours(shop);
   return (
-    <Link href={`/shop/${shop.id}`} className="block group">
+    <Link href={`/shop/${shop.slug || shop.id}`} className="block group">
       <div className="bg-white border-2 border-gray-200 rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-indigo-500 animate-fade-in cursor-pointer relative overflow-hidden">
       {/* Animated gradient background on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
