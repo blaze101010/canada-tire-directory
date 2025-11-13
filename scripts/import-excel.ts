@@ -178,7 +178,7 @@ async function postImportProcessing() {
       .limit(1000);
 
     if (provinces && provinces.length > 0) {
-      const distribution = provinces.reduce((acc: any, shop) => {
+      const distribution = provinces.reduce((acc: any, shop: any) => {
         const key = shop.province_code || shop.state || 'Unknown';
         acc[key] = (acc[key] || 0) + 1;
         return acc;
