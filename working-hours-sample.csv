@@ -1,0 +1,7 @@
+shop_id,shop_name,address,phone,city,province,monday,tuesday,wednesday,thursday,friday,saturday,sunday,is_24_hours,is_open_now
+550e8400-e29b-41d4-a716-446655440000,Canadian Tire - Calgary,123 Main Street SW,(403) 555-1234,Calgary,Alberta,9:00 AM - 6:00 PM,9:00 AM - 6:00 PM,9:00 AM - 6:00 PM,9:00 AM - 9:00 PM,9:00 AM - 9:00 PM,10:00 AM - 4:00 PM,Closed,false,
+550e8400-e29b-41d4-a716-446655440001,Fountain Tire - Edmonton,456 Oak Avenue,(780) 555-5678,Edmonton,Alberta,8:00 AM - 5:00 PM,8:00 AM - 5:00 PM,8:00 AM - 5:00 PM,8:00 AM - 5:00 PM,8:00 AM - 5:00 PM,9:00 AM - 2:00 PM,Closed,false,
+550e8400-e29b-41d4-a716-446655440002,KalTire - Vancouver,789 Granville Street,(604) 555-9012,Vancouver,British Columbia,9:00 AM - 6:00 PM,9:00 AM - 6:00 PM,9:00 AM - 6:00 PM,9:00 AM - 8:00 PM,9:00 AM - 8:00 PM,10:00 AM - 5:00 PM,11:00 AM - 4:00 PM,false,
+550e8400-e29b-41d4-a716-446655440003,OK Tire - Toronto,321 Yonge Street,(416) 555-3456,Toronto,Ontario,8:30 AM - 6:00 PM,8:30 AM - 6:00 PM,8:30 AM - 6:00 PM,8:30 AM - 7:00 PM,8:30 AM - 7:00 PM,9:00 AM - 3:00 PM,Closed,false,
+550e8400-e29b-41d4-a716-446655440004,24 Hour Tire Shop,999 Night Road,(604) 555-7890,Vancouver,British Columbia,Open 24 hours,Open 24 hours,Open 24 hours,Open 24 hours,Open 24 hours,Open 24 hours,Open 24 hours,true,true
+550e8400-e29b-41d4-a716-446655440005,Weekend Tire Shop,111 Saturday Lane,(403) 555-1111,Calgary,Alberta,Closed,Closed,Closed,Closed,Closed,8:00 AM - 6:00 PM,9:00 AM - 5:00 PM,false,
