@@ -64,7 +64,7 @@ function ShopCard({ shop }: ShopCardProps) {
       )}
 
       {/* Rating Display */}
-      {shop.average_rating !== null && shop.average_rating > 0 && (
+      {shop.average_rating !== null && shop.average_rating !== undefined && shop.average_rating > 0 && (
         <div className="mb-4 pb-4 border-b border-gray-200">
           <RatingStars
             rating={shop.average_rating}
