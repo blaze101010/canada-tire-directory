@@ -82,8 +82,8 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
               <h3 className="text-sm font-semibold text-gray-900 mb-3">Share this shop</h3>
 
               <div className="space-y-2">
-                {/* Native Share (Mobile) */}
-                {typeof window !== 'undefined' && 'share' in navigator && (
+                {/* Native Share (Mobile) - Only shown if Web Share API is available */}
+                {typeof window !== 'undefined' && navigator?.share && (
                   <button
                     onClick={handleNativeShare}
                     className="w-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded-lg transition-colors text-left"
