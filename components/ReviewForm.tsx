@@ -113,6 +113,7 @@ export default function ReviewForm({ shopId, shopName, onSuccess }: ReviewFormPr
     setSubmitStatus('idle');
 
     try {
+      // @ts-ignore - Supabase type inference issue
       const { data, error } = await supabase.from('reviews').insert([
         {
           listing_id: shopId,
@@ -125,7 +126,7 @@ export default function ReviewForm({ shopId, shopName, onSuccess }: ReviewFormPr
           visit_date: formData.visit_date || null,
           would_recommend: formData.would_recommend,
           is_approved: false, // Needs approval
-        },
+        } as any,
       ]);
 
       if (error) {
