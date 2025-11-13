@@ -94,7 +94,7 @@ export default function SchemaMarkup({ type, data }: SchemaMarkupProps) {
         if (!shop) return {};
 
         // Build opening hours specification
-        const openingHours = [];
+        const openingHours: any[] = [];
         const dayMap: { [key: string]: string } = {
           'hours_monday': 'Monday',
           'hours_tuesday': 'Tuesday',
