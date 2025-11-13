@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ShareButtonsProps {
   url: string;
@@ -11,6 +11,12 @@ interface ShareButtonsProps {
 export default function ShareButtons({ url, title, description }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [canShare, setCanShare] = useState(false);
+
+  // Check if Web Share API is available
+  useEffect(() => {
+    setCanShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
+  }, []);
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -83,7 +89,7 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
 
               <div className="space-y-2">
                 {/* Native Share (Mobile) - Only shown if Web Share API is available */}
-                {typeof window !== 'undefined' && navigator?.share && (
+                {canShare && (
                   <button
                     onClick={handleNativeShare}
                     className="w-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded-lg transition-colors text-left"
