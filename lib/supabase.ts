@@ -1,9 +1,9 @@
 import { createBrowserClient } from '@supabase/ssr';
 import { Database } from '@/types/database';
 
-// Get environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Get environment variables and trim whitespace
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() || '';
 
 // Validate environment variables
 if (!supabaseUrl || !supabaseAnonKey) {
