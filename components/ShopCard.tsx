@@ -117,10 +117,10 @@ function ShopCard({ shop }: ShopCardProps) {
           </div>
         )}
 
-        {((shop.reviews_count !== null && shop.reviews_count > 0) || (shop as any).reviews > 0) && (
+        {((shop.reviews_count !== null && shop.reviews_count !== undefined && shop.reviews_count > 0) || (shop as any).reviews > 0) && (
           <div className="flex items-start">
             <span className="font-semibold text-gray-600 min-w-[100px]">Reviews:</span>
-            <span className="text-gray-800">{(shop as any).reviews || shop.reviews_count} reviews</span>
+            <span className="text-gray-800">{(shop as any).reviews || shop.reviews_count || 0} reviews</span>
           </div>
         )}
       </div>
