@@ -1,23 +1,7 @@
 import { TireShop } from '@/types';
 
-export const tireShops: TireShop[] = [
-  {
-    id: '1',
-    name: 'Calgary Tire Center',
-    address: '1234 17th Avenue SW',
-    city: 'Calgary',
-    province: 'AB',
-    postalCode: 'T2T 0A1',
-    phone: '(403) 555-0101',
-  },
-  {
-    id: '2',
-    name: 'Edmonton Wheel & Tire',
-    address: '5678 Whyte Avenue',
-    city: 'Edmonton',
-    province: 'AB',
-    postalCode: 'T6E 1W9',
-    phone: '(780) 555-0202',
+// This file is not used - all data comes from Supabase
+export const tireShops: TireShop[] = [];
   },
   {
     id: '3',
