@@ -98,7 +98,7 @@ async function importExcel() {
         try {
           const { data: insertedData, error } = await supabase
             .from('tire_shops')
-            .insert(transformedBatch);
+            .insert(transformedBatch as any);
 
           if (error) {
             console.error(`\n❌ Error importing batch starting at row ${i + 2}:`, error.message);
