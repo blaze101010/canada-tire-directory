@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface ShareButtonsProps {
   url: string;
@@ -11,12 +11,6 @@ interface ShareButtonsProps {
 export default function ShareButtons({ url, title, description }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const [canShare, setCanShare] = useState(false);
-
-  // Check if Web Share API is available
-  useEffect(() => {
-    setCanShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
-  }, []);
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -43,22 +37,6 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
   const handleShare = (platform: keyof typeof shareLinks) => {
     window.open(shareLinks[platform], '_blank', 'width=600,height=400');
     setShowMenu(false);
-  };
-
-  // Check if native share is available (mobile devices)
-  const handleNativeShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title,
-          text: description,
-          url,
-        });
-        setShowMenu(false);
-      } catch (err) {
-        console.error('Share failed:', err);
-      }
-    }
   };
 
   return (
@@ -88,19 +66,6 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
               <h3 className="text-sm font-semibold text-gray-900 mb-3">Share this shop</h3>
 
               <div className="space-y-2">
-                {/* Native Share (Mobile) - Only shown if Web Share API is available */}
-                {canShare && (
-                  <button
-                    onClick={handleNativeShare}
-                    className="w-full flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded-lg transition-colors text-left"
-                  >
-                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    <span className="text-sm text-gray-700">Share via...</span>
-                  </button>
-                )}
-
                 {/* Copy Link */}
                 <button
                   onClick={handleCopyLink}
