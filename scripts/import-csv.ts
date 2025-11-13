@@ -129,6 +129,7 @@ async function importCSV() {
 
   async function processBatch(batch: any[]) {
     try {
+      // @ts-ignore - Supabase type inference issue with batch insert
       const { data, error } = await supabase
         .from('tire_shops')
         .insert(batch);
