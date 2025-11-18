@@ -48,6 +48,9 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
       index: true,
       follow: true,
     },
+    alternates: {
+      canonical: `${siteConfig.url}/tire-shops/${provinceSlug}`,
+    },
   };
 }
 

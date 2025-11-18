@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
       follow: true,
     },
     alternates: {
-      canonical: `https://tireshoppro.ca/tire-shops/${provinceSlug}/${citySlug}`,
+      canonical: `${siteConfig.url}/tire-shops/${provinceSlug}/${citySlug}`,
     },
   };
 }
