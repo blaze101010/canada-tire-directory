@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
+    ],
+    apple: '/apple-icon.png',
+  },
+  manifest: '/manifest.json',
   openGraph: {
     title: `Find a Tire Shop Near Me | ${siteConfig.name}`,
     description: `Browse ${siteConfig.totalShops} tire shops across Canada. Find tire installation, alignment, and repair services near you.`,
